@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     public GameObject Effect;
     public float jump = 2;
+    public GameManager manager;
     Rigidbody2D rb;
 
     void Start()
@@ -28,7 +29,7 @@ public class Player : MonoBehaviour
             death();
         }
 
-        if (collision.gameObject.tag == "Offest")
+        if (collision.gameObject.tag == "Offset")
         {
             death();
         }
@@ -37,6 +38,7 @@ public class Player : MonoBehaviour
     void death()
     {
         Instantiate(Effect, transform.localPosition, Quaternion.identity);
+        manager.GameOver = true;
         Destroy(gameObject);
     }
 }
