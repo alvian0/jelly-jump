@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public GameObject Effect;
     public float jump = 2;
     public GameManager manager;
+    public AudioSource sfx;
     Rigidbody2D rb;
 
     void Start()
@@ -19,6 +20,7 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Jump"))
         {
             rb.velocity = new Vector2(0, jump);
+            sfx.Play();
         }
     }
 

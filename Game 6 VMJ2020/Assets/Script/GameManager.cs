@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject Scoremater, GameOverPanel, InGamePanel;
     public Text ScoreFinal, HighScore;
     public GameObject[] Medal;
+    public AudioSource sfx;
 
     Animator anim;
 
@@ -23,17 +24,17 @@ public class GameManager : MonoBehaviour
     {
         Scoremater.GetComponent<Text>().text = "Score : " + Score.ToString();
 
-        if (Score >= 1)
+        if (Score >= 15)
         {
             medal(1);
         }
 
-        if (Score >= 5)
+        if (Score >= 30)
         {
             medal(2);
         }
 
-        if (Score >= 10)
+        if (Score >= 50)
         {
             medal(3);
         }
@@ -63,10 +64,16 @@ public class GameManager : MonoBehaviour
     {
         anim.SetTrigger("Score");
         Score++;
+        sfx.Play();
     }
 
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void Menu()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 }
